@@ -6,6 +6,7 @@ const bot = new Discord.Client({disableEveryone:true});
 //==========================================
 var score = {};
 var scoredUsers = {};
+var hour = d.getTime();
 var d = new Date();
 var done = false;
 //==========================================
@@ -18,11 +19,11 @@ bot.on("message", async message =>{
     let prefix = botconfig.prefix;
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
-    if(d.getHours() % 6 == 0 && !done){
+    if(d.getHours() - hour >= 6 && !done){
         done = true;
         scoredUsers[message.author.username] = null;
     }
-    else if(done && !(d.getHours()%6==0)){
+    else if(done && !(d.getHours() - hour >= 6)){
         done = false;
     }
     
@@ -77,6 +78,9 @@ bot.on("message", async message =>{
                 message.channel.send("Please reward a valid user with a tag!");
             }
         }
+    }
+    if(cmd == prefix+"rules"){
+        message.channel.send("This bot was designed to encourage peer editing in the 2018-2019 EA9 discord server. Please do not reward yourself and please reward fairly.");
     }
 });
 
