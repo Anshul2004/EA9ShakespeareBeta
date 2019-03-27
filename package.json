@@ -1,0 +1,22 @@
+{
+  "name": "ea9shakespearebeta",
+  "version": "1.0.0",
+  "description": "A discord bot for the EA9 2018-2019 server",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "anshul",
+    "kashyap",
+    "cyber",
+    "blaze",
+    "english",
+    "advanced"
+  ],
+  "author": "Anshul Kashyap",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  }
+}
