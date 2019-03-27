@@ -40,17 +40,29 @@ bot.on("message", async message =>{
     }
     if(cmd == prefix+"reward"){
         if(messageArray.length >= 2){
-            if(messageArray[1].substring(0, 2) == "<@"){
-                if(scoredUsers[message.author.username] != null){
-                    var hasGiven = false;
-                    hasGivenArray = scoredUsers[message.author.username].split(" ");
-                    for(i = 0; i < hasGivenArray.length; i++){
-                        if(hasGivenArray[i] == messageArray[1]){
-                            hasGiven = true;
+            if(messageArray[1].substring(2, messageArray[1].length-1) != message.author.id){
+                if(messageArray[1].substring(0, 2) == "<@"){
+                    if(scoredUsers[message.author.username] != null){
+                        var hasGiven = false;
+                        hasGivenArray = scoredUsers[message.author.username].split(" ");
+                        for(i = 0; i < hasGivenArray.length; i++){
+                            if(hasGivenArray[i] == messageArray[1]){
+                                hasGiven = true;
+                            }
                         }
-                    }
-                    if(hasGiven){
-                        message.channel.send("You have already rewarded " + messageArray[1] + " for peer editing!");
+                        if(hasGiven){
+                            message.channel.send("Thee has't already reward'd " + messageArray[1] + " f'r pe'r editing!");
+                        }
+                        else{
+                            if(score[messageArray[1]] > 0){
+                                score[messageArray[1]] = score[messageArray[1]] + 1;
+                            }
+                            else{
+                                score[messageArray[1]] = 1
+                            }
+                            scoredUsers[message.author.username] += " "+messageArray[1];
+                            message.channel.send("Thee has't reward'd " + messageArray[1] + " f'r pe'r editing.");
+                        }
                     }
                     else{
                         if(score[messageArray[1]] > 0){
@@ -60,27 +72,20 @@ bot.on("message", async message =>{
                             score[messageArray[1]] = 1
                         }
                         scoredUsers[message.author.username] += " "+messageArray[1];
-                        message.channel.send("You have rewarded " + messageArray[1] + " for peer editing.");
+                        message.channel.send(message.author.username + " hast reward'd " + messageArray[1] + " f'r pe'r editing.");
                     }
                 }
                 else{
-                    if(score[messageArray[1]] > 0){
-                        score[messageArray[1]] = score[messageArray[1]] + 1;
-                    }
-                    else{
-                        score[messageArray[1]] = 1
-                    }
-                    scoredUsers[message.author.username] += " "+messageArray[1];
-                    message.channel.send(message.author.username + " has rewarded " + messageArray[1] + " for peer editing.");
+                    message.channel.send("Prithee reward a valid us'r with a tag!");
                 }
             }
             else{
-                message.channel.send("Please reward a valid user with a tag!");
+                message.channel.send("Thee can't reward yourself bum!");
             }
         }
     }
     if(cmd == prefix+"rules"){
-        message.channel.send("This bot was designed to encourage peer editing in the 2018-2019 EA9 discord server. Please do not reward yourself and please reward fairly.");
+        message.channel.send("This bot wast design'd to encourageth pe'r editing in the 2018-2019 ea9 disc'rd s'rv'r.  Prithee doth not reward yourself and prithee reward fairly.");
     }
 });
 
