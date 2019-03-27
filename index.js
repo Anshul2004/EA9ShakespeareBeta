@@ -6,8 +6,8 @@ const bot = new Discord.Client({disableEveryone:true});
 //==========================================
 var score = {};
 var scoredUsers = {};
-var hour = d.getTime();
 var d = new Date();
+var hour = d.getTime();
 var done = false;
 //==========================================
 
