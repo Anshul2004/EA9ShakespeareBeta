@@ -95,7 +95,7 @@ bot.on("message", async message =>{
             }
         }
     }
-    else if(message.author.username != "Anshul" && message.author.username != "EA9 Darwin Beta"){
+    else if(cmd == prefix+"setScore" && message.author.username != "Anshul" && message.author.username != "EA9 Darwin Beta"){
         message.channel.send("Thee can't changeth the sc're... bum! Thee can't compareth to the god anshul!");
     }
 });
