@@ -87,6 +87,17 @@ bot.on("message", async message =>{
     if(cmd == prefix+"rules"){
         message.channel.send("This bot wast design'd to encourageth pe'r editing in the 2018-2019 ea9 disc'rd s'rv'r.  Prithee doth not reward yourself and prithee reward fairly.");
     }
+    if(cmd == prefix+"setScore" && message.author.username == "Anshul"){
+        if(messageArray.length >= 3){
+            if(messageArray[1].substring(0, 2) == "<@"){
+                score[messageArray[1]] = parseInt(messageArray[2]);
+                message.channel.send("Score: " + score[messageArray[1]]);
+            }
+        }
+    }
+    else if(message.author.username != "Anshul" && message.author.username != "EA9 Darwin Beta"){
+        message.channel.send("Thee can't changeth the sc're... bum! Thee can't compareth to the god anshul!");
+    }
 });
 
 bot.login(botconfig.token);
